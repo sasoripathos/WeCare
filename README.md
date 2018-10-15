@@ -4,3 +4,4 @@ We are Team Newcomer! Our goals for this project are to learn how to work effici
 # Recent significant changes
 - [10/10/2018] Added the second deliverable in /documents/Deliverable 2 - October 15th/. Created a folder for product backlog in /documents/ that will include the most up-to-date versions of the User Stories and Personas.
 - [9/29/2018] Added the first deliverable report in /documents/
+- [10/15/2018] Added project skeleton code in /code
