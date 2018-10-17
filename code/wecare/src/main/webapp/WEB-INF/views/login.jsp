@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,17 +19,16 @@
   </nav>
 	</div>
 	<div style="margin-left: 10%;">
-		<form method="post" action="/login">
+		<form:form action="/login" modelAttribute="loginUser">
 			<div class="form-group" style="margin-right: 50%;color: 808080">
 				<label for="email">Email</label>
-				<input type="email" class = "form-control" id = "email" name="email" placeholder="Email address">
+				<form:input type="email" class = "form-control" id = "email" name="email" path="email" placeholder="Email address"/>
 				<label for="password">Password</label>
-				<input type="password" class = "form-control" id = "password" name="password" placeholder="password">
-				<button type="submit" class="btn btn-default">submit</button>
-				
+				<form:input type="password" class = "form-control" id = "password" name="password" path="password" placeholder="password"/>
+				<input type="submit" value="submit" class="btn btn-default"/>
 			</div>
 			
-		</form>
+		</form:form>
 
 	</div>
 
