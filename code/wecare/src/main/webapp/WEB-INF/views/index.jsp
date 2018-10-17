@@ -15,12 +15,12 @@
 </head>
 <body>
 	<div class="nav">
-  <nav class="navbar navbar-default" role="navigation" style="margin-top:0; background-color:#A1CAF1/*#87A96B*/">
-  	<ul class="nav navbar-nav" style="margin-left: 82%">
-  		<li><a href="/">weCare!</a></li>
-  		<li><a href="/login">login</a></li>
-  	</ul>
-  </nav>
+		<nav class="navbar navbar-default" role="navigation" style="margin-top:0; background-color:#A1CAF1">
+  			<ul class="nav navbar-nav" style="margin-left: 82%">
+  				<li><a href="/">weCare!</a></li>
+  				<li><a href="/login">login</a></li>
+  			</ul>
+		</nav>
 	</div>
 	<div style="margin-left: 10%;">
 		Welcome to weCare system! Sign in to upload files or generate reports.
