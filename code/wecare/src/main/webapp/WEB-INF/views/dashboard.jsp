@@ -25,7 +25,7 @@
 		<h5 style="color:#536872"> Employer: ${loginUser.role}! </h5>
 		
 		<c:choose>
-		 <c:when test="${loginUser.role=='Government'}">
+		 <c:when test="${loginUser.role=='Agence'}">
 		   <div style="margin-left: 70%;">
 			<form method="post" enctype = "multipart/form-data" action="/upload">
 				<div class="form-group" style="color: 808080">
