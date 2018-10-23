@@ -38,6 +38,7 @@ Bob | bob@gmail.com | bob12345
 Charlie | charlie@gmail.com | charlie12345
 
 # Recent significant changes
+- [10/21/2018] Merged login feature into master branch
 - [10/15/2018] Added project skeleton code in /code
 - [10/10/2018] Added the second deliverable in /documents/Deliverable 2 - October 15th/. Created a folder for product backlog in /documents/ that will include the most up-to-date versions of the User Stories and Personas.
 - [9/29/2018] Added the first deliverable report in /documents/
