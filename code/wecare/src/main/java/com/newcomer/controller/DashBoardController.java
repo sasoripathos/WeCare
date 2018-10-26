@@ -15,6 +15,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.newcomer.dbservice.UserRepository;
 import com.newcomer.entity.User;
+import com.mongodb.DBCursor;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.Mongo;
+import com.mongodb.MongoException;
+
+
 
 @Controller
 public class DashBoardController {
@@ -55,6 +62,26 @@ public class DashBoardController {
 			System.out.println("Something is wrong");
 		}
 		return "upload_result";
+	}
+	
+	
+	
+	
+	/**
+	 * A method to read from the database given any collection and a query
+	 * @param db_collection
+	 * @param query
+	 * @return the data read from mongodb
+	 */
+	@PostMapping("/query")
+	public String readData(String db_collection,String query) {
+		// Will add code to read data below;
+		try {
+			
+		} catch (MongoException e) {
+			
+		}
+		return "";
 	}
 
 }
