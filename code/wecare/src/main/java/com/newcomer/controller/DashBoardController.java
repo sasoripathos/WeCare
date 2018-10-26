@@ -2,6 +2,7 @@ package com.newcomer.controller;
 
 import java.io.IOException;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,11 +16,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.newcomer.dbservice.UserRepository;
 import com.newcomer.entity.User;
-import com.mongodb.DBCursor;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
 
 
 
@@ -73,10 +75,42 @@ public class DashBoardController {
 	 * @param query
 	 * @return the data read from mongodb
 	 */
+	@SuppressWarnings("deprecation")
 	@PostMapping("/query")
-	public String readData(String db_collection,String query) {
+	public static String readData(String db_collection, String entry, String query) {
 		// Will add code to read data below;
+		
+		
 		try {
+			
+			String url         = "mongodb://weCare:newcomers100@ds117691.mlab.com:17691/team3";
+			MongoClientURI uri = new MongoClientURI(url);
+			MongoClient mongo_client = new MongoClient(uri);
+			MongoDatabase db = mongo_client.getDatabase("team3");
+			MongoCollection<org.bson.Document> collection = db.getCollection(db_collection);
+			
+			MongoCursor<org.bson.Document> users = collection.find().iterator();
+			
+			while(users.hasNext()){
+				
+				org.bson.Document data = users.next();
+				if(data.containsKey(entry)){
+					
+					String attr = data.getString(entry);
+					if(attr.equals(query)){
+						System.out.println(attr);
+						System.out.println(data);
+						
+					}
+					
+				}
+				
+				
+			}
+			users.close();
+			mongo_client.close();
+			
+			
 			
 		} catch (MongoException e) {
 			
