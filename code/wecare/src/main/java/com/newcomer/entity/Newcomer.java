@@ -19,6 +19,7 @@ public class Newcomer {
 	private String postcode;
 	private String languagePreference;
 	private String consent;
+	private String procDetail;
 	
 	public Newcomer() {
 		
@@ -159,6 +160,14 @@ public class Newcomer {
 	public void setConsent(String consent) {
 		this.consent = consent;
 	}
-	
 
+	public String getProcDetail() {
+		return procDetail;
+	}
+
+	public void setProcDetail(String procDetail) {
+		this.procDetail = procDetail;
+	}
+	
+	
 }

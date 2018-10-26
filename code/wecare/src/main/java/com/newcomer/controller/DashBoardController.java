@@ -1,7 +1,5 @@
 package com.newcomer.controller;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,10 +13,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.newcomer.dbservice.UserRepository;
 import com.newcomer.entity.User;
+import com.newcomer.fileprocessor.FileProcessor;
+import com.newcomer.fileprocessor.loader.NeedAssessRefLoader;
 
 @Controller
 public class DashBoardController {
-	
+
 	/**
 	 * MongoDB repository for user.
 	 */
@@ -45,15 +45,12 @@ public class DashBoardController {
 	
 	@PostMapping("/upload")
 	public String fileUpload(@RequestParam("file1") MultipartFile file) {
-		byte[] content = new byte[100];
-		try {
-			int a = file.getInputStream().read(content);
-			System.out.println("Read: " + a + " bytes");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("Something is wrong");
-		}
+		// Create file processor
+		FileProcessor processor = new FileProcessor();
+		processor.registerLoader(new NeedAssessRefLoader());
+		
+		// Start load process
+		processor.process(file);
 		return "upload_result";
 	}
 
