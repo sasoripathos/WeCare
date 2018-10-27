@@ -13,7 +13,7 @@ import com.newcomer.entity.Newcomer;
 import com.newcomer.entity.SupportService;
 import com.newcomer.fileprocessor.ValueTranslator;
 
-@Service
+@Service("Needs Assessment and Referrals Service")
 public class NeedAssessRefLoader implements TemplateLoader {
 	
 	@Autowired
@@ -24,11 +24,9 @@ public class NeedAssessRefLoader implements TemplateLoader {
 	
 	@Autowired
 	private SupportServiceRepository supservRepo;
-
-	@Override
-	public String getTemplateType() {
-		return "Needs Assessment and Referrals Service";
-	}
+	
+	@Autowired
+	private ValueTranslator trans;
 
 	@Override
 	public void load(List<String> row) {
@@ -62,8 +60,8 @@ public class NeedAssessRefLoader implements TemplateLoader {
 		supserv.setIdentifierValue(row.get(3));
 		
 		// Support Service data
-		supserv.setReceived(ValueTranslator.toBool(row.get(68)));
-		supserv.setChildCare(ValueTranslator.toBool(row.get(69)));
+		supserv.setReceived(trans.toBool(row.get(68)));
+		supserv.setChildCare(trans.toBool(row.get(69)));
 		supserv.setChild1Age(row.get(70));
 		supserv.setChild1CareType(row.get(71));
 		supserv.setChild2Age(row.get(72));
@@ -74,13 +72,13 @@ public class NeedAssessRefLoader implements TemplateLoader {
 		supserv.setChild4CareType(row.get(77));
 		supserv.setChild5Age(row.get(78));
 		supserv.setChild5CareType(row.get(79));
-		supserv.setTransportation(ValueTranslator.toBool(row.get(80)));
-		supserv.setDisabilities(ValueTranslator.toBool(row.get(81)));
+		supserv.setTransportation(trans.toBool(row.get(80)));
+		supserv.setDisabilities(trans.toBool(row.get(81)));
 		supserv.setTranslateBetween(row.get(83));
 		supserv.setTranslateAnd(row.get(84));
 		supserv.setInterpreteBetween(row.get(86));
 		supserv.setInterpreteBetween(row.get(87));
-		supserv.setCrisisCounselling(ValueTranslator.toBool(row.get(88)));
+		supserv.setCrisisCounselling(trans.toBool(row.get(88)));
 		supserv.setUpdateReason(row.get(91));
 		return supserv;
 	}
@@ -96,67 +94,67 @@ public class NeedAssessRefLoader implements TemplateLoader {
 		rec.setServiceLanguage(row.get(7));
 		rec.setInstitutionType(row.get(9));
 		rec.setReferredBy(row.get(10));
-		rec.setCompletedAndShared(ValueTranslator.toBool(row.get(89)));
+		rec.setCompletedAndShared(trans.toBool(row.get(89)));
 		rec.setEndDate(row.get(90));
 		// Normal Needs
-		rec.setKnowledge_Life(ValueTranslator.toBool(row.get(11)));
-		rec.setKnowledge_LifeRef(ValueTranslator.toBool(row.get(12)));
-		rec.setKnowledge_ComAndGov(ValueTranslator.toBool(row.get(13)));
-		rec.setKnowledge_ComAndGovRef(ValueTranslator.toBool(row.get(14)));
-		rec.setKnowledge_Work(ValueTranslator.toBool(row.get(15)));
-		rec.setKnowledge_WorkRef(ValueTranslator.toBool(row.get(16)));
-		rec.setKnowledge_Education(ValueTranslator.toBool(row.get(17)));
-		rec.setKnowledge_EducationRef(ValueTranslator.toBool(row.get(18)));
-		rec.setIncrease_SocialNetwork(ValueTranslator.toBool(row.get(19)));
-		rec.setIncrease_SocialNetworkRef(ValueTranslator.toBool(row.get(20)));
-		rec.setIncrease_ProfessionalNetwork(ValueTranslator.toBool(row.get(21)));
-		rec.setIncrease_ProfessionalNetworkRef(ValueTranslator.toBool(row.get(22)));
-		rec.setIncrease_localCommunityService(ValueTranslator.toBool(row.get(23)));
-		rec.setIncrease_localCommunityServiceRef(ValueTranslator.toBool(row.get(24)));
-		rec.setIncrease_CommunityInvolv(ValueTranslator.toBool(row.get(25)));
-		rec.setIncrease_CommunityInvolvRef(ValueTranslator.toBool(row.get(26)));
-		rec.setImproveLanguage(ValueTranslator.toBool(row.get(27)));
-		rec.setImproveLanguageRef(ValueTranslator.toBool(row.get(28)));
+		rec.setKnowledge_Life(trans.toBool(row.get(11)));
+		rec.setKnowledge_LifeRef(trans.toBool(row.get(12)));
+		rec.setKnowledge_ComAndGov(trans.toBool(row.get(13)));
+		rec.setKnowledge_ComAndGovRef(trans.toBool(row.get(14)));
+		rec.setKnowledge_Work(trans.toBool(row.get(15)));
+		rec.setKnowledge_WorkRef(trans.toBool(row.get(16)));
+		rec.setKnowledge_Education(trans.toBool(row.get(17)));
+		rec.setKnowledge_EducationRef(trans.toBool(row.get(18)));
+		rec.setIncrease_SocialNetwork(trans.toBool(row.get(19)));
+		rec.setIncrease_SocialNetworkRef(trans.toBool(row.get(20)));
+		rec.setIncrease_ProfessionalNetwork(trans.toBool(row.get(21)));
+		rec.setIncrease_ProfessionalNetworkRef(trans.toBool(row.get(22)));
+		rec.setIncrease_localCommunityService(trans.toBool(row.get(23)));
+		rec.setIncrease_localCommunityServiceRef(trans.toBool(row.get(24)));
+		rec.setIncrease_CommunityInvolv(trans.toBool(row.get(25)));
+		rec.setIncrease_CommunityInvolvRef(trans.toBool(row.get(26)));
+		rec.setImproveLanguage(trans.toBool(row.get(27)));
+		rec.setImproveLanguageRef(trans.toBool(row.get(28)));
 		rec.setImproveLanguageTo(row.get(29));
-		rec.setImproveOther(ValueTranslator.toBool(row.get(30)));
-		rec.setImproveOtherRef(ValueTranslator.toBool(row.get(31)));
+		rec.setImproveOther(trans.toBool(row.get(30)));
+		rec.setImproveOtherRef(trans.toBool(row.get(31)));
 		rec.setImproveOtherTo(row.get(32));
-		rec.setFindEmployment(ValueTranslator.toBool(row.get(33)));
-		rec.setFindEmploymentRef(ValueTranslator.toBool(row.get(34)));
+		rec.setFindEmployment(trans.toBool(row.get(33)));
+		rec.setFindEmploymentRef(trans.toBool(row.get(34)));
 		rec.setFindEmploymentTimeFrame(row.get(35));
-		rec.setMinimumWorkExperience(ValueTranslator.toBool(row.get(36)));
+		rec.setMinimumWorkExperience(trans.toBool(row.get(36)));
 		rec.setOccupation(row.get(37));
-		rec.setObtainCredential(ValueTranslator.toBool(row.get(38)));
-		rec.setCitizen(ValueTranslator.toBool(row.get(39)));
-		rec.setSupportServiceRequired(ValueTranslator.toBool(row.get(40)));
-		rec.setChildrenCare(ValueTranslator.toBool(row.get(41)));
-		rec.setTransportation(ValueTranslator.toBool(row.get(42)));
-		rec.setDisability(ValueTranslator.toBool(row.get(43)));
-		rec.setTranslation(ValueTranslator.toBool(row.get(44)));
-		rec.setInterpretation(ValueTranslator.toBool(row.get(45)));
-		rec.setCrisisCounselling(ValueTranslator.toBool(row.get(46)));
+		rec.setObtainCredential(trans.toBool(row.get(38)));
+		rec.setCitizen(trans.toBool(row.get(39)));
+		rec.setSupportServiceRequired(trans.toBool(row.get(40)));
+		rec.setChildrenCare(trans.toBool(row.get(41)));
+		rec.setTransportation(trans.toBool(row.get(42)));
+		rec.setDisability(trans.toBool(row.get(43)));
+		rec.setTranslation(trans.toBool(row.get(44)));
+		rec.setInterpretation(trans.toBool(row.get(45)));
+		rec.setCrisisCounselling(trans.toBool(row.get(46)));
 		//Non-IRCC program services needed
-		rec.setNonIRCCServiceNeeded(ValueTranslator.toBool(row.get(47)));
-		rec.setFood(ValueTranslator.toBool(row.get(48)));
-		rec.setFoodRef(ValueTranslator.toBool(row.get(49)));
-		rec.setHousing(ValueTranslator.toBool(row.get(50)));
-		rec.setHousingRef(ValueTranslator.toBool(row.get(51)));
-		rec.setHealth(ValueTranslator.toBool(row.get(52)));
-		rec.setHealthRef(ValueTranslator.toBool(row.get(53)));
-		rec.setFinancial(ValueTranslator.toBool(row.get(54)));
-		rec.setFinancialRef(ValueTranslator.toBool(row.get(55)));
-		rec.setFamily(ValueTranslator.toBool(row.get(56)));
-		rec.setFamilyRef(ValueTranslator.toBool(row.get(57)));
-		rec.setLanguageNonIRCC(ValueTranslator.toBool(row.get(58)));
-		rec.setLanguageNonIRCCRef(ValueTranslator.toBool(row.get(59)));
-		rec.setEducationSkill(ValueTranslator.toBool(row.get(60)));
-		rec.setEducationSkillRef(ValueTranslator.toBool(row.get(61)));
-		rec.setEmploymentRelated(ValueTranslator.toBool(row.get(62)));
-		rec.setEmploymentRelatedRef(ValueTranslator.toBool(row.get(63)));
-		rec.setLegalInfo(ValueTranslator.toBool(row.get(64)));
-		rec.setLegalInfoRef(ValueTranslator.toBool(row.get(65)));
-		rec.setCommunity(ValueTranslator.toBool(row.get(66)));
-		rec.setCommunityRef(ValueTranslator.toBool(row.get(67)));
+		rec.setNonIRCCServiceNeeded(trans.toBool(row.get(47)));
+		rec.setFood(trans.toBool(row.get(48)));
+		rec.setFoodRef(trans.toBool(row.get(49)));
+		rec.setHousing(trans.toBool(row.get(50)));
+		rec.setHousingRef(trans.toBool(row.get(51)));
+		rec.setHealth(trans.toBool(row.get(52)));
+		rec.setHealthRef(trans.toBool(row.get(53)));
+		rec.setFinancial(trans.toBool(row.get(54)));
+		rec.setFinancialRef(trans.toBool(row.get(55)));
+		rec.setFamily(trans.toBool(row.get(56)));
+		rec.setFamilyRef(trans.toBool(row.get(57)));
+		rec.setLanguageNonIRCC(trans.toBool(row.get(58)));
+		rec.setLanguageNonIRCCRef(trans.toBool(row.get(59)));
+		rec.setEducationSkill(trans.toBool(row.get(60)));
+		rec.setEducationSkillRef(trans.toBool(row.get(61)));
+		rec.setEmploymentRelated(trans.toBool(row.get(62)));
+		rec.setEmploymentRelatedRef(trans.toBool(row.get(63)));
+		rec.setLegalInfo(trans.toBool(row.get(64)));
+		rec.setLegalInfoRef(trans.toBool(row.get(65)));
+		rec.setCommunity(trans.toBool(row.get(66)));
+		rec.setCommunityRef(trans.toBool(row.get(67)));
 		return rec;
 	}
 

@@ -2,25 +2,28 @@ package com.newcomer.fileprocessor;
 
 import java.util.List;
 
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.newcomer.fileprocessor.loader.NeedAssessRefLoader;
 import com.newcomer.fileprocessor.loader.TemplateLoader;
 
 @Service
 public class FileProcessor {
-	
+
 	@Autowired
-	private NeedAssessRefLoader narLoader;
+	private ApplicationContext context;
 	
 	private TemplateLoader getLoader(String type) {
-		if(type.equalsIgnoreCase("Needs Assessment and Referrals Service")) {
-			return narLoader;
-		} else { // TODO: here is well to add more loader
-			return narLoader;
+		TemplateLoader loader = null;
+		try {
+			loader = (TemplateLoader) context.getBean(type);
+		} catch (NoSuchBeanDefinitionException e) {
+			// If no such bean, do nothing
 		}
+		return  loader;
 	}
 	
 	public void process(MultipartFile file) {
@@ -34,7 +37,7 @@ public class FileProcessor {
 		if(loader == null) {
 			System.out.println("Unknown template type");
 		} else {
-			System.out.println("Known Type: " + loader.getTemplateType());
+			System.out.println("Known Type: " + type);
 			List<List<String>> data = reader.getRows(loader.getTemplateColumnNumber());
 			for(List<String> row: data) {
 				loader.load(row);
