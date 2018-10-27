@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.newcomer.dbservice.UserRepository;
 import com.newcomer.entity.User;
 import com.newcomer.fileprocessor.FileProcessor;
-import com.newcomer.fileprocessor.loader.NeedAssessRefLoader;
 
 @Controller
 public class DashBoardController {
@@ -24,6 +23,9 @@ public class DashBoardController {
 	 */
 	@Autowired
 	private UserRepository repo;
+	
+	@Autowired
+	private FileProcessor processor;
 	
 	private User user;
 	/**
@@ -45,11 +47,6 @@ public class DashBoardController {
 	
 	@PostMapping("/upload")
 	public String fileUpload(@RequestParam("file1") MultipartFile file) {
-		// Create file processor
-		FileProcessor processor = new FileProcessor();
-		processor.registerLoader(new NeedAssessRefLoader());
-		
-		// Start load process
 		processor.process(file);
 		return "upload_result";
 	}

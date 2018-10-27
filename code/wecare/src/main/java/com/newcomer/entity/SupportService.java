@@ -1,9 +1,16 @@
 package com.newcomer.entity;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="SupportService")
 public class SupportService {
 	
+	@Id
 	private String id;
 	private String identifierValue;
+	private Boolean received;
+	private Boolean childCare;
 	private String child1Age;
 	private String child1CareType;
 	private String child2Age;
@@ -41,6 +48,22 @@ public class SupportService {
 
 	public void setIdentifierValue(String identifierValue) {
 		this.identifierValue = identifierValue;
+	}
+
+	public Boolean getReceived() {
+		return received;
+	}
+
+	public Boolean getChildCare() {
+		return childCare;
+	}
+
+	public void setChildCare(Boolean childCare) {
+		this.childCare = childCare;
+	}
+
+	public void setReceived(Boolean received) {
+		this.received = received;
 	}
 
 	public String getChild1Age() {

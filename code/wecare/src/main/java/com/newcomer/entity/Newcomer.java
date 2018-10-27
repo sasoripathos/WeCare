@@ -1,9 +1,19 @@
 package com.newcomer.entity;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="Newcomer")
 public class Newcomer {
 	
+	@Id
 	private String id;
+	
+	// Newcomer Information
 	private String identifierName;
+	
+	@Indexed(unique=true)
 	private String identifierValue;
 	private String birthday;
 	private String phoneNumber;

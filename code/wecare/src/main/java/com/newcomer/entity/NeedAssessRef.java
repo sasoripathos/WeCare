@@ -1,18 +1,28 @@
 package com.newcomer.entity;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="NeedAssessRef")
 public class NeedAssessRef {
 	
 	// Identifier
+	@Id
 	private String id;
 	private String identifierValue;
 
-	// Normal Needs
+	// Record info
 	private String procDetail;
 	private String updateRecordID;
 	private String startDate;
 	private String serviceLanguage;
 	private String institutionType;
 	private String referredBy;
+	private Boolean completedAndShared;
+	private String endDate;
+
+	
+	// Normal Needs
 	private Boolean knowledge_Life;
 	private Boolean knowledge_LifeRef;
 	private Boolean knowledge_ComAndGov;
@@ -42,8 +52,16 @@ public class NeedAssessRef {
 	private String occupation;
 	private Boolean obtainCredential;
 	private Boolean citizen;
-	
+	private Boolean supportServiceRequired;
+	private Boolean childrenCare;
+	private Boolean transportation;
+	private Boolean disability;
+	private Boolean translation;
+	private Boolean interpretation;
+	private Boolean crisisCounselling;
+
 	// Non-IRCC program services needed
+	private Boolean nonIRCCServiceNeeded;
 	private Boolean food;
 	private Boolean foodRef;
 	private Boolean housing;
@@ -131,6 +149,22 @@ public class NeedAssessRef {
 
 	public void setReferredBy(String referredBy) {
 		this.referredBy = referredBy;
+	}
+
+	public Boolean getCompletedAndShared() {
+		return completedAndShared;
+	}
+
+	public void setCompletedAndShared(Boolean completedAndShared) {
+		this.completedAndShared = completedAndShared;
+	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
 	}
 
 	public Boolean getKnowledge_Life() {
@@ -361,8 +395,72 @@ public class NeedAssessRef {
 		return citizen;
 	}
 
+	public Boolean getSupportServiceRequired() {
+		return supportServiceRequired;
+	}
+
+	public void setSupportServiceRequired(Boolean supportServiceRequired) {
+		this.supportServiceRequired = supportServiceRequired;
+	}
+
+	public Boolean getChildrenCare() {
+		return childrenCare;
+	}
+
+	public void setChildrenCare(Boolean childrenCare) {
+		this.childrenCare = childrenCare;
+	}
+
+	public Boolean getTransportation() {
+		return transportation;
+	}
+
+	public void setTransportation(Boolean transportation) {
+		this.transportation = transportation;
+	}
+
+	public Boolean getDisability() {
+		return disability;
+	}
+
+	public void setDisability(Boolean disability) {
+		this.disability = disability;
+	}
+
+	public Boolean getTranslation() {
+		return translation;
+	}
+
+	public void setTranslation(Boolean translation) {
+		this.translation = translation;
+	}
+
+	public Boolean getInterpretation() {
+		return interpretation;
+	}
+
+	public void setInterpretation(Boolean interpretation) {
+		this.interpretation = interpretation;
+	}
+
+	public Boolean getCrisisCounselling() {
+		return crisisCounselling;
+	}
+
+	public void setCrisisCounselling(Boolean crisisCounselling) {
+		this.crisisCounselling = crisisCounselling;
+	}
+
 	public void setCitizen(Boolean citizen) {
 		this.citizen = citizen;
+	}
+
+	public Boolean getNonIRCCServiceNeeded() {
+		return nonIRCCServiceNeeded;
+	}
+
+	public void setNonIRCCServiceNeeded(Boolean nonIRCCServiceNeeded) {
+		this.nonIRCCServiceNeeded = nonIRCCServiceNeeded;
 	}
 
 	public Boolean getFood() {
