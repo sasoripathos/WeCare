@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.newcomer.dbservice.UserRepository;
 import com.newcomer.entity.User;
@@ -49,17 +50,24 @@ public class DashBoardController {
 	}
 	
 	@PostMapping("/upload")
-	public String fileUpload(@RequestParam("file1") MultipartFile file) {
+	public ModelAndView fileUpload(@RequestParam("file1") MultipartFile file) {
 		List<CellError> errors = processor.process(file);
+		ModelAndView resultPage= new  ModelAndView("upload_result");
 		if(errors == null) {
-			// TODO:
+			resultPage.addObject("resultState", "Failed");
+			resultPage.addObject("reason", "Unknown template");
 		} else if (errors.size() == 0) {
-			// TODO:
+			resultPage.addObject("resultState", "Succeed");
+			//resultPage.addObject("reason", "");
 			System.out.println("Upload Success");
 		} else {
+			resultPage.addObject("resultState", "Failed");
+			resultPage.addObject("reason", "Errors exist");
+			resultPage.addObject("errors", errors);
 			System.out.println("There are errors");
 		}
-		return "upload_result";
+		//return "upload_result";
+		return resultPage;
 	}
 
 }
