@@ -56,7 +56,7 @@ public class FileProcessor {
 			List<List<String>> data = reader.getRows(loader.getTemplateColumnNumber());
 			List<CellError> errors = new ArrayList<CellError>();
 			for(int i=0; i<data.size(); i++) { // Check data first
-				errors.addAll(checker.check(i, data.get(i)));
+				errors.addAll(checker.check(i+3, data.get(i)));
 			}
 			if(errors.size() == 0 ) {
 				for (List<String> row:data) {
