@@ -16,7 +16,7 @@ Clone this repository to your machine. Open a terminal/command line in the worki
 ```
 1. cd ./code/wecare
 2. mvn clean install
-3. java -jar target/wecare.war
+3. java -jar target/weCare.war
 ```
 A copy of weCare will start running on your machine.
 
