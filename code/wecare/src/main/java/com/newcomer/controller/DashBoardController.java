@@ -1,5 +1,7 @@
 package com.newcomer.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.newcomer.dbservice.UserRepository;
 import com.newcomer.entity.User;
 import com.newcomer.fileprocessor.FileProcessor;
+import com.newcomer.fileprocessor.checker.CellError;
 
 @Controller
 public class DashBoardController {
@@ -47,7 +50,15 @@ public class DashBoardController {
 	
 	@PostMapping("/upload")
 	public String fileUpload(@RequestParam("file1") MultipartFile file) {
-		processor.process(file);
+		List<CellError> errors = processor.process(file);
+		if(errors == null) {
+			// TODO:
+		} else if (errors.size() == 0) {
+			// TODO:
+			System.out.println("Upload Success");
+		} else {
+			System.out.println("There are errors");
+		}
 		return "upload_result";
 	}
 
