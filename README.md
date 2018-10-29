@@ -16,7 +16,7 @@ Clone this repository to your machine. Open a terminal/command line in the worki
 ```
 1. cd ./code/wecare
 2. mvn clean install
-3. java -jar target/wecare.war
+3. java -jar target/weCare.war
 ```
 A copy of weCare will start running on your machine.
 
@@ -38,6 +38,7 @@ Bob | bob@gmail.com | bob12345
 Charlie | charlie@gmail.com | charlie12345
 
 # Recent significant changes
+- [10/28/2018] Added Sprint2 backlog in documents/Deliverable 3 - October 29th/Spring 2 Backlog, and documents/sprint backlog.
 - [10/25/2018] Added Sprint1 backlog in /documents/Deliverable 3 - October 29th/Spring 1 Backlog/.Created a folder for spring backlog in /documents/ that will include backlog for all sprints.
 - [10/21/2018] Merged login feature into master branch.
 - [10/15/2018] Added project skeleton code in /code.
