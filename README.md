@@ -38,6 +38,7 @@ Bob | bob@gmail.com | bob12345
 Charlie | charlie@gmail.com | charlie12345
 
 # Recent significant changes
+- [10/31/2018] Updated user stories to version 1.
 - [10/28/2018] Added Sprint2 backlog in documents/Deliverable 3 - October 29th/Spring 2 Backlog, and documents/sprint backlog. Merged file upload feature into master branch.
 - [10/25/2018] Added Sprint1 backlog in /documents/Deliverable 3 - October 29th/Spring 1 Backlog/.Created a folder for spring backlog in /documents/ that will include backlog for all sprints.
 - [10/21/2018] Merged login feature into master branch.
