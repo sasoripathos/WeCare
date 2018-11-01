@@ -175,7 +175,7 @@ public class DashBoardController {
 			}
 			 return ResponseEntity.ok()
 			 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getName() + "\"")
-			 .contentType(MediaType.APPLICATION_PDF).contentLength(file.length())
+			 .contentType(MediaType.TEXT_PLAIN).contentLength(file.length())
 			 .body(resource);
 		}
 	
