@@ -2,6 +2,7 @@ package com.newcomer.dbservice;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -25,18 +25,10 @@ public class UserRepositoryTest {
 	@Autowired
 	private UserRepository repo;
 	
-	@Autowired
-	private MongoTemplate db;
-	
 	@Before
 	public void init() {
 		User a = new User("Jack", "jack@email.com", "UTSC", "12345", "DEF");
 		repo.save(a);
-	}
-	
-	@Test
-	public void testCollectionExist() {
-		assertTrue(db.collectionExists("User"));
 	}
 
 	@Test
@@ -55,5 +47,10 @@ public class UserRepositoryTest {
 	public void testCannotFindUser() {
 		User b = repo.findByEmail("alice@gmail.com");
 		assertTrue(b == null);
+	}
+	
+	@After
+	public void clean() {
+		repo.deleteAll();
 	}
 }
