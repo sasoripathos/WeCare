@@ -79,7 +79,7 @@ public class DashBoardController {
 			resultPage.addObject("resultState", "Failed");
 			resultPage.addObject("reason", "Unknown template");
 		} else if (errors.size() == 0) {
-			resultPage.addObject("resultState", "Succeed");
+			resultPage.addObject("resultState", "Successful");
 			//resultPage.addObject("reason", "");
 			System.out.println("Upload Success");
 		} else {
@@ -95,9 +95,11 @@ public class DashBoardController {
 	
 	@GetMapping("/query")
 	@ModelAttribute
-	public ResponseEntity<InputStreamResource> data(@RequestParam("query") String query, String db_collection, Model model) throws FileNotFoundException {
-	   
-		if (!query.equals(new String("NeedAssessRef"))) {
+	public ResponseEntity<InputStreamResource> data(@RequestParam("template") String template,@RequestParam("query") String query, String db_collection, Model model) throws FileNotFoundException {
+		System.out.println(template);
+		System.out.println(query);
+		
+		if (!template.equals(new String("NeedAssessRef"))) {
 			model.addAttribute("my_results", "No such template");
 			CSVWriter file = null;
 			try {
@@ -132,7 +134,7 @@ public class DashBoardController {
 				MongoClientURI uri = new MongoClientURI(url);
 				MongoClient mongo_client = new MongoClient(uri);
 				MongoDatabase db = mongo_client.getDatabase("team3");
-				MongoCollection<org.bson.Document> collection = db.getCollection(query);
+				MongoCollection<org.bson.Document> collection = db.getCollection(template);
 				
 				
 				MongoCursor<org.bson.Document> data = collection.find().iterator();

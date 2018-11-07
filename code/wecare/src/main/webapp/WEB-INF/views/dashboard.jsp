@@ -48,8 +48,24 @@
 			       <form method="Get" action="/query">
 				<div class="form-group" style="color: 808080">
 					<label for="email">Run queries </label>
-					<input style="width:200px;" type="String" class = "form-control" id = "query" name="query">
-					<button type="submit" class="btn btn-default">submit</button>
+					<br>
+				    
+					<select name="template">
+						<option>NeedAssessRef</option>
+						<option>Template 2</option>
+						<option>Template 3</option>
+						<option>Template 4</option>
+                                         </select>
+					 
+					 <select name="query">
+						<option>Select all</option>
+						<option>Select all</option>
+                                         </select>
+					 <br> <br> <br>
+                                        <input type="submit" value="Submit">
+					
+					
+					<!--<button type="submit" class="btn btn-default">submit</button> -->
 				</div>
 			      </form>
 			
