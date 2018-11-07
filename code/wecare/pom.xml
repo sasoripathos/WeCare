@@ -64,6 +64,14 @@
     	<artifactId>poi-ooxml</artifactId>
     	<version>4.0.0</version>
 	</dependency>
+	
+	 <!-- https://mvnrepository.com/artifact/de.flapdoodle.embed/de.flapdoodle.embed.mongo -->
+	<dependency>
+    	<groupId>de.flapdoodle.embed</groupId>
+    	<artifactId>de.flapdoodle.embed.mongo</artifactId>
+    	<scope>test</scope>
+	</dependency>
+
 
   </dependencies>
   <build>
