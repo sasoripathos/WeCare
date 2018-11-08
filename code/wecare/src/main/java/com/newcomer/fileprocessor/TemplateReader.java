@@ -39,7 +39,11 @@ public class TemplateReader {
 		List<String> data = new ArrayList<String>();
 		for(int i=0;i<maxColumn;i++) {
 			Cell cell = row.getCell(i);
-			data.add(cell.getStringCellValue());
+			if(cell == null) {
+				data.add("");
+			} else {
+				data.add(cell.getStringCellValue());
+			}
 		}
 		return data;
 	} 
@@ -50,11 +54,12 @@ public class TemplateReader {
 		try {
 			myWorkBook = new XSSFWorkbook(file.getInputStream());
 			XSSFSheet mySheet = myWorkBook.getSheetAt(0);
-			for (int i=3;i<=10;i++) {
+			for (int i=3;;i++) {
 				XSSFRow row = mySheet.getRow(i);
 				if(row == null) {
 					break;
 				}
+				System.out.println(i+": " + row);
 				List<String> data = getRow(row, maxColumn);
 				if(String.join("", data).equals("")) {
 					break;
