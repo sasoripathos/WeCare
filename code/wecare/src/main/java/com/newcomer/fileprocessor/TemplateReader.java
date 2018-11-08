@@ -40,8 +40,10 @@ public class TemplateReader {
 		for(int i=0;i<maxColumn;i++) {
 			Cell cell = row.getCell(i);
 			if(cell == null) {
+				// If cell is null, that cell is empty
 				data.add("");
 			} else {
+				// Else, the cell has value
 				data.add(cell.getStringCellValue());
 			}
 		}
@@ -59,7 +61,6 @@ public class TemplateReader {
 				if(row == null) {
 					break;
 				}
-				System.out.println(i+": " + row);
 				List<String> data = getRow(row, maxColumn);
 				if(String.join("", data).equals("")) {
 					break;
