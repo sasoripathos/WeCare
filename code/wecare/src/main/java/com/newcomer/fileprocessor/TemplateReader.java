@@ -1,5 +1,6 @@
 package com.newcomer.fileprocessor;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,16 +24,33 @@ public class TemplateReader {
 			myWorkBook = new XSSFWorkbook(file.getInputStream());
 			XSSFSheet mySheet = myWorkBook.getSheetAt(0);
 			XSSFRow row = mySheet.getRow(0);
-			Cell header = row.getCell(0);
-			String title = header.getStringCellValue();
-			lines = title.split("\n");
-		} catch (Exception e) {
+			if(row != null) {
+				// If the row is not empty
+				Cell header = row.getCell(0);
+				if (header != null) {
+					// If there is content in the cell
+					String title = header.getStringCellValue().trim();
+					lines = title.split("\n");
+				}
+			}
+			
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		if(lines != null && lines.length > 0 ) {
-			return lines[lines.length -1];
+			// If there is content in the head cell
+			String answer = lines[lines.length -1].trim();
+			if(answer.equals("")) {
+				// If the last line has no word
+				return "Unknown";
+			} else {
+				// otherwise return the last line as the template type
+				return lines[lines.length -1];
+			}
+		} else {
+			// Otherwise the template is unknown
+			return "Unknown";
 		}
-		return "Unknown";
 	}
 	
 	private List<String> getRow(XSSFRow row, int maxColumn) {
@@ -43,8 +61,8 @@ public class TemplateReader {
 				// If cell is null, that cell is empty
 				data.add("");
 			} else {
-				// Else, the cell has value
-				data.add(cell.getStringCellValue());
+				// Else, the cell has value, removing heading and tailing spaces
+				data.add(cell.getStringCellValue().trim());
 			}
 		}
 		return data;
