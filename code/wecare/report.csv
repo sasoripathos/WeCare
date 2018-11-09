@@ -1,0 +1,5 @@
+"identifierValue","procDetail","updateRecordID","startDate","serviceLanguage","institutionType","referredBy","completedAndShared","endDate"
+"12345679","Example2","10387105","2018-10-25","French","Public library","Community centre / library","true","2018-10-26"
+"12345680","Example3","10387106","2018-10-27","English","Post-secondary institution","Overseas orientation session (e.g. CIIP)","true","2018-10-28"
+"12345681","Example4","10387107","2018-10-27","French","Employment agency","Immigration consultant / lawyer","true","2018-10-27"
+"12345678","[BUID:305939,RID:,ORP:4/5,DTS:2018-08-07 10:05:04][1] (Client) Unable to validate against database. / (Client) Impossible de valider dans la base de données.","10387104","2018-10-26","English","Settlement service provider","Community centre / library","true","2018-05-20"
