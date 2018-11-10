@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.newcomer.dbservice.UserRepository;
 import com.newcomer.entity.User;
@@ -43,8 +42,7 @@ public class LoginController {
 	 *     credential invalid.
 	 */
 	@PostMapping("/login")
-	public String loginProcess(HttpServletRequest request, @ModelAttribute("loginUser") User loginUser,
-			RedirectAttributes red) {
+	public String loginProcess(HttpServletRequest request, @ModelAttribute("loginUser") User loginUser) {
 		String email = loginUser.getEmail();
 		// Get stored user information based on email
 		User user = repo.findByEmail(email);
