@@ -89,7 +89,6 @@ public class LogoutControllerTest {
 			session.isNew();
 			fail();
 		} catch(IllegalStateException e) {
-			
 		}
 	}
 	
