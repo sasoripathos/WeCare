@@ -44,6 +44,36 @@
 		 <c:otherwise>
 			<div style="margin-left: 70%;">
 			       <h4 style="color:#536872">Welcome TEQ staff, you will manage agencies and generate reports here!</h4>
+			       
+			       <form method="Get" action="/query">
+				<div class="form-group" style="color: 808080">
+					<label for="email">Run queries </label>
+					<br>
+				    
+					<select name="template">
+						<option>NeedAssessRef</option>
+						<option>Template 2</option>
+						<option>Template 3</option>
+						<option>Template 4</option>
+                                         </select>
+					 
+					 <select name="query">
+						<option>Select all</option>
+						<option>Select all</option>
+                                         </select>
+					 <br> <br> <br>
+                                        <input type="submit" value="Submit">
+					
+					
+					<!--<button type="submit" class="btn btn-default">submit</button> -->
+				</div>
+			      </form>
+			
+			
+			       <h5 style="color:#536872"> ${my_results} </h5>
+			       
+			       
+			       
 			</div>
 		 </c:otherwise>
 		</c:choose>
