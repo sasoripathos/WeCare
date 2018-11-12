@@ -2,8 +2,6 @@ package com.newcomer.controller;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.StringReader;
-import java.nio.file.Path;
 import java.util.List;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,7 +11,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -88,7 +85,6 @@ public class DashBoardController {
 			resultPage.addObject("errors", errors);
 			System.out.println("There are errors");
 		}
-		//return "upload_result";
 		return resultPage;
 	}
 	
@@ -108,7 +104,7 @@ public class DashBoardController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		
+			System.out.println(file.hashCode());
 			return ResponseEntity.ok()
 					 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + "empty.csv" + "\"")
 					 .contentType(MediaType.APPLICATION_PDF).contentLength(0)

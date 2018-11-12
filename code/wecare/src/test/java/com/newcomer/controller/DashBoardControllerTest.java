@@ -93,7 +93,7 @@ public class DashBoardControllerTest {
 		mockmvc.perform(multipart("/upload").file(file).session((MockHttpSession) session))
 			.andExpect(status().isOk())
 			.andExpect(view().name("upload_result"))
-			.andExpect(model().attribute("resultState", is("Succeed")));
+			.andExpect(model().attribute("resultState", is("Successful")));
 		assertEquals(4, mockrepo.findAll().size());
 	}
 	
@@ -136,7 +136,7 @@ public class DashBoardControllerTest {
 		mockmvc.perform(multipart("/upload").file(file).session((MockHttpSession) session))
 			.andExpect(status().isOk())
 			.andExpect(view().name("upload_result"))
-			.andExpect(model().attribute("resultState", is("Succeed")));
+			.andExpect(model().attribute("resultState", is("Successful")));
 		assertEquals(2, narRepo.findAll().size());
 		assertEquals(2, newcomerRepo.findAll().size());
 		assertEquals(2, supservRepo.findAll().size());
