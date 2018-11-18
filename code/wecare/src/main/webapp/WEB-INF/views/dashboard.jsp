@@ -9,7 +9,23 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		
+		<script>
+		$(document).ready(function(){
+		    $("#newaccount").click(function(){
+			$("#form1").css("display", "block");
+			$("#reports").css("display", "none");
+			$("#newaccount").css("display", "none");
+		    });
+		});
+		
+		$(document).ready(function(){
+		    $("#submt").click(function(){
+			$("#form1").css("display", "none");
+		    });
+		});
+		</script>
 	</head>
 	<body>
 		<div class="nav">
@@ -23,6 +39,8 @@
 
 		<h5 style="color:#536872"> Welcome ${loginUser.name}! </h5>
 		<h5 style="color:#536872"> Employer: ${loginUser.role}! </h5>
+		
+	
 		
 		<c:choose>
 		 <c:when test="${loginUser.role=='Agence'}">
@@ -42,7 +60,9 @@
 			</div>
 		 </c:when>
 		 <c:otherwise>
-			<div style="margin-left: 70%;">
+		       <button id = "newaccount" class="btn btn-success" >add account</button>
+		        
+			<div id = "reports" style="margin-left: 70%;">
 			       <h4 style="color:#536872">Welcome TEQ staff, you will manage agencies and generate reports here!</h4>
 			       
 			       <form method="Get" action="/query">
@@ -68,13 +88,24 @@
 					<!--<button type="submit" class="btn btn-default">submit</button> -->
 				</div>
 			      </form>
-			
-			
 			       <h5 style="color:#536872"> ${my_results} </h5>
 			       
-			       
-			       
 			</div>
+			
+			<form id = "form1" style ="margin-left:10%;display:none; width:600px;height:600px;" action="/account">
+				Name:<br>
+				<input style="width:400px;" type="text" name="firstname" placeholder="name">
+				<br><br><br>
+				Email:<br>
+				 <input style="width:400px;" type="email" name="email" placeholder="email">
+				 <br><br><br>
+				Password:<br>
+				 <input style="width:400px;" type="password" name="password" placeholder="password">
+				 <br><br>
+				 <input  id = "submt" type="submit" value="Create">
+				 <a href="/dashboard">Cancel</a>
+			   </form> 
+			   
 		 </c:otherwise>
 		</c:choose>
 		
