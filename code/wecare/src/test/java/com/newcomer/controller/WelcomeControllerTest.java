@@ -39,7 +39,7 @@ public class WelcomeControllerTest {
 	@Test
 	public void shouldReturnWelcomePage() {
 		assertThat(restTemplate.getForObject("http://localhost:" + port + "/", String.class))
-			.contains("Welcome to weCare system! Sign in to upload files or generate reports.");
+			.contains("This platform allows agencies to serve new arrivals in the Scarborough area!");
 	}
 
 }
