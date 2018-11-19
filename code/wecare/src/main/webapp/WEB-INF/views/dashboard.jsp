@@ -92,17 +92,23 @@
 			       
 			</div>
 			
-			<form id = "form1" style ="margin-left:10%;display:none; width:600px;height:600px;" action="/account">
-				Name:<br>
-				<input style="width:400px;" type="text" name="firstname" placeholder="name">
+			<form id = "form1" style ="margin-left:10%;display:none; width:600px;height:600px;" action="/newaccount">
+				*Name:<br>
+				<input style="width:400px;" type="text" name="firstname" placeholder="name" required>
 				<br><br><br>
-				Email:<br>
-				 <input style="width:400px;" type="email" name="email" placeholder="email">
+				*Email:<br>
+				 <input style="width:400px;" type="email" name="email" placeholder="email" required>
 				 <br><br><br>
-				Password:<br>
-				 <input style="width:400px;" type="password" name="password" placeholder="password">
-				 <br><br>
-				 <input  id = "submt" type="submit" value="Create">
+				*Password:<br>
+				 <input style="width:400px;" type="password" name="password" placeholder="password" required>
+				 <br><br><br>
+				 *Role:<br>
+				<input style="width:400px;" type="text" name="role" placeholder="role" required>
+				<br><br><br>
+				Agency:<br>
+				<input style="width:400px;" type="text" name="agency" placeholder="agency">
+				<br><br><br>
+				 <input  id = "submt" type="submit" value="Create" formmethod="post">
 				 <a href="/dashboard">Cancel</a>
 			   </form> 
 			   

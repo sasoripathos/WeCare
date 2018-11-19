@@ -88,6 +88,28 @@ public class DashBoardController {
 		return resultPage;
 	}
 	
+	@PostMapping("/newaccount")
+	public String addAccount(@RequestParam("firstname") String name, 
+			@RequestParam("email") String email,
+			@RequestParam("password") String password, 
+			@RequestParam("role") String role,
+			@RequestParam("agency") String agency) {
+		System.out.println(name);
+		if(name == null || email == null || password == null || role == null) {
+			//TODO:
+		}
+		User exist = repo.findByEmail(email);
+		if(exist != null) {
+			//TODO:
+			System.out.println("exist");
+		} else {
+			User newUser = new User(name, email, role, password, agency);
+			repo.save(newUser);
+			System.out.println("success");
+		}
+		return "redirect:/dashboard";
+	}
+	
 	
 	@GetMapping("/query")
 	@ModelAttribute
