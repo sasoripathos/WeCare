@@ -27,7 +27,7 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="/">WeCare</a>
     </div>
-    <form style="margin-left:50%;" class="navbar-form navbar-left">
+    <form style="margin-left:85%;" class="navbar-form navbar-left">
       <p><a class="btn btn-success" href="/login" role="button">login</a></p>
     </form>
   </div>
