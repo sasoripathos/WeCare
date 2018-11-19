@@ -77,7 +77,7 @@ public class NeedAssessRefLoader implements TemplateLoader {
 		supserv.setTranslateBetween(row.get(83));
 		supserv.setTranslateAnd(row.get(84));
 		supserv.setInterpreteBetween(row.get(86));
-		supserv.setInterpreteBetween(row.get(87));
+		supserv.setInterpreteAnd(row.get(87));
 		supserv.setCrisisCounselling(trans.toBool(row.get(88)));
 		supserv.setUpdateReason(row.get(91));
 		return supserv;
