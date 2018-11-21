@@ -34,6 +34,8 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.newcomer.dbservice.UserRepository;
 import com.newcomer.entity.User;
+import com.newcomer.exception.InvalidParameterException;
+import com.newcomer.exception.UserExistedException;
 import com.newcomer.fileprocessor.FileProcessor;
 import com.newcomer.fileprocessor.checker.CellError;
 import com.opencsv.CSVWriter;
@@ -93,19 +95,25 @@ public class DashBoardController {
 			@RequestParam("email") String email,
 			@RequestParam("password") String password, 
 			@RequestParam("role") String role,
-			@RequestParam("agency") String agency) {
-		System.out.println(name);
-		if(name == null || email == null || password == null || role == null) {
-			//TODO:
+			@RequestParam("agency") String agency) throws UserExistedException, InvalidParameterException {
+		
+		// By default the parameters will should be required
+		if(name.trim().equals("") || email.trim().equals("") || password.trim().equals("") || role.trim().equals("")) {
+			// If any required parameter is empty, throw exception
+			throw new InvalidParameterException();
+		}
+		if(role.trim().equals("Agence") && agency.trim().equals("")) {
+			// If agency is not specified when try to create an agency account, throw exception
+			throw new InvalidParameterException();
 		}
 		User exist = repo.findByEmail(email);
 		if(exist != null) {
-			//TODO:
-			System.out.println("exist");
+			// If email is used, throw exception
+			throw new UserExistedException(email);
 		} else {
+			// create new account
 			User newUser = new User(name, email, role, password, agency);
 			repo.save(newUser);
-			System.out.println("success");
 		}
 		return "redirect:/dashboard";
 	}
