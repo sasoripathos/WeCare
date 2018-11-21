@@ -90,12 +90,19 @@ public class DashBoardController {
 		return resultPage;
 	}
 	
-	@PostMapping("/newaccount")
-	public String addAccount(@RequestParam("firstname") String name, 
+	@PostMapping("/dashboard")
+	public String addAccount(Model model,HttpServletRequest request, @RequestParam("firstname") String name, 
 			@RequestParam("email") String email,
 			@RequestParam("password") String password, 
 			@RequestParam("role") String role,
 			@RequestParam("agency") String agency) throws UserExistedException, InvalidParameterException {
+		
+		    HttpSession session = request.getSession();
+		    this.user = repo.findByEmail((String)session.getAttribute("user"));
+		    model.addAttribute("loginUser", this.user);
+		    
+	
+		    
 		
 		// By default the parameters will should be required
 		if(name.trim().equals("") || email.trim().equals("") || password.trim().equals("") || role.trim().equals("")) {
@@ -109,13 +116,19 @@ public class DashBoardController {
 		User exist = repo.findByEmail(email);
 		if(exist != null) {
 			// If email is used, throw exception
-			throw new UserExistedException(email);
+			System.out.println("new account error");
+			model.addAttribute("state", "Email: " + email + " has been taken! Please use another email address.");
+			//throw new UserExistedException(email);
+			
 		} else {
+			System.out.println("new account successfully created!");
+			model.addAttribute("state", "New account created successfully!");
 			// create new account
 			User newUser = new User(name, email, role, password, agency);
 			repo.save(newUser);
+			
 		}
-		return "redirect:/dashboard";
+		return "dashboard";//"redirect:/dashboard";
 	}
 	
 	

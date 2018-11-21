@@ -12,6 +12,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		
 		<script>
+		
 		$(document).ready(function(){
 		    $("#newaccount").click(function(){
 			$("#form1").css("display", "block");
@@ -20,26 +21,40 @@
 		    });
 		});
 		
+		
+		
 		$(document).ready(function(){
+		   setTimeout(function() {
+		       //document.getElementById("state").innerHTML = "";
+		       $('#state').fadeOut();
+		       }, 1500);
+		
 		    $("#submt").click(function(){
 			$("#form1").css("display", "none");
+			$("#reports").css("display", "none");
+			$("#newaccount").css("display", "none");
+			
 		    });
 		});
 		</script>
 	</head>
 	<body>
 		<div class="nav">
-			<nav class="navbar navbar-default" role="navigation" style="margin-top:0; background-color:#A1CAF1">
-  				<ul class="nav navbar-nav" style="margin-left: 87%">
-  					<li><a href="/">weCare!</a></li>
-  					<li style="background-color: #FFBF00;"><a href="/logout">logout</a></li>
-  				</ul>
-			</nav>
-		</div>
-
-		<h5 style="color:#536872"> Welcome ${loginUser.name}! </h5>
-		<h5 style="color:#536872"> Employer: ${loginUser.role}! </h5>
-		
+		   <nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+			  <div class="navbar-header">
+			    <a class="navbar-brand" href="/">WeCare</a>
+			  </div>
+			  <form style="margin-left:85%;" class="navbar-form navbar-left">
+			    <p><a class="btn btn-success" href="/logout" role="button">logout</a></p>
+			  </form>
+			</div>
+                  </nav>
+	    </div>
+	<h2 id = "state" style="color:#536872;"> ${state} </h2>
+	<h5 style="color:#536872"> Welcome ${loginUser.name}! </h5>
+	<h5 style="color:#536872"> Employer: ${loginUser.role}! </h5>
+	
 	
 		
 		<c:choose>
@@ -62,8 +77,8 @@
 		 <c:otherwise>
 		       <button id = "newaccount" class="btn btn-success" >add account</button>
 		        
-			<div id = "reports" style="margin-left: 70%;">
-			       <h4 style="color:#536872">Welcome TEQ staff, you will manage agencies and generate reports here!</h4>
+			<div id = "reports" style="margin-left: 50%;">
+			       <div style="color:#536872">Welcome TEQ staff, manage agencies and generate reports here!</div>
 			       
 			       <form method="Get" action="/query">
 				<div class="form-group" style="color: 808080">
@@ -79,9 +94,11 @@
 					 
 					 <select name="query">
 						<option>Select all</option>
-						<option>Select all</option>
+						<option>Select * WHERE serviceLanguage = English</option>
+						<option>Select * WHERE startDate = 2018 </option>
+						<option>Select * WHERE endDate   = 2018 </option>
                                          </select>
-					 <br> <br> <br>
+					 <br> <br>
                                         <input type="submit" value="Submit">
 					
 					
@@ -92,7 +109,9 @@
 			       
 			</div>
 			
-			<form id = "form1" style ="margin-left:10%;display:none; width:600px;height:600px;" action="/newaccount">
+			<h1 style="color:#536872"> ${status.result} </h1>
+			
+			<form id = "form1" style ="margin-left:10%;display:none; width:600px;height:600px;" action="/dashboard">
 				*Name:<br>
 				<input style="width:400px;" type="text" name="firstname" placeholder="name" required>
 				<br><br><br>
