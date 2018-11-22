@@ -26,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.MongoException;
@@ -51,8 +53,6 @@ public class DashBoardController {
 	
 	@Autowired
 	private FileProcessor processor;
-	
-	private User user;
 	/**
 	 * Display the dashboard.
 	 * @param request request the HTTP request for displaying dashboard.
@@ -63,10 +63,10 @@ public class DashBoardController {
 	@RequestMapping("/dashboard")
 	public String dashboard(HttpServletRequest request, Model model) {
 		// Get current login user
-		HttpSession session = request.getSession();
-		this.user = repo.findByEmail((String)session.getAttribute("user"));
+		HttpSession session = request.getSession(false);
+		User user = repo.findByEmail((String)session.getAttribute("user"));
 		// Load login user to dashboard
-		model.addAttribute("loginUser", this.user);
+		model.addAttribute("loginUser", user);
 		return "dashboard";
 	}
 	
@@ -90,20 +90,12 @@ public class DashBoardController {
 		return resultPage;
 	}
 	
-	@PostMapping("/dashboard")
-	public String addAccount(Model model,HttpServletRequest request, @RequestParam("firstname") String name, 
-			@RequestParam("email") String email,
-			@RequestParam("password") String password, 
-			@RequestParam("role") String role,
-			@RequestParam("agency") String agency) throws UserExistedException, InvalidParameterException {
-		
-		    HttpSession session = request.getSession();
-		    this.user = repo.findByEmail((String)session.getAttribute("user"));
-		    model.addAttribute("loginUser", this.user);
-		    
-	
-		    
-		
+	@PostMapping("/newaccount")
+	public String addAccount(RedirectAttributes rediAttr, @RequestParam("firstname") String name, 
+			@RequestParam("email") String email, @RequestParam("password") String password, 
+			@RequestParam("role") String role, @RequestParam("agency") String agency)
+					throws UserExistedException, InvalidParameterException {
+
 		// By default the parameters will should be required
 		if(name.trim().equals("") || email.trim().equals("") || password.trim().equals("") || role.trim().equals("")) {
 			// If any required parameter is empty, throw exception
@@ -113,22 +105,22 @@ public class DashBoardController {
 			// If agency is not specified when try to create an agency account, throw exception
 			throw new InvalidParameterException();
 		}
+		
 		User exist = repo.findByEmail(email);
 		if(exist != null) {
 			// If email is used, throw exception
 			System.out.println("new account error");
-			model.addAttribute("state", "Email: " + email + " has been taken! Please use another email address.");
-			//throw new UserExistedException(email);
+			throw new UserExistedException(email);
 			
 		} else {
 			System.out.println("new account successfully created!");
-			model.addAttribute("state", "New account created successfully!");
 			// create new account
 			User newUser = new User(name, email, role, password, agency);
 			repo.save(newUser);
 			
 		}
-		return "dashboard";//"redirect:/dashboard";
+		rediAttr.addFlashAttribute("state", "New account created successfully!");
+		return "redirect:/dashboard";
 	}
 	
 	

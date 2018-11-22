@@ -111,7 +111,7 @@
 			
 			<h1 style="color:#536872"> ${status.result} </h1>
 			
-			<form id = "form1" style ="margin-left:10%;display:none; width:600px;height:600px;" action="/dashboard">
+			<form id = "form1" style ="margin-left:10%;display:none; width:600px;height:600px;" action="/newaccount">
 				*Name:<br>
 				<input style="width:400px;" type="text" name="firstname" placeholder="name" required>
 				<br><br><br>
