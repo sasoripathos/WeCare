@@ -13,14 +13,38 @@
 </head>
 <body>
 	<div class="nav">
-		<nav class="navbar navbar-default" role="navigation" style="margin-top:0; background-color:#A1CAF1">
-			<ul class="nav navbar-nav" style="margin-left: 87%">
-				<li><a href="/">weCare!</a></li>
-				<li style="background-color: #FFBF00;"><a href="/logout">logout</a></li>
-  			</ul>
-		</nav>
-	</div>
-	<h3>Upload ${resultState}</h3>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/dashboard">WeCare</a>
+				</div>
+				<form style="margin-left:85%;" class="navbar-form navbar-left">
+			    	<p><a class="btn btn-success" href="/logout" role="button">logout</a></p>
+			  	</form>
+			</div>
+        </nav>
+    </div>
+    
+    
+    <div class="jumbotron">
+        <div class="container">
+        	<h1 class="display-3">Upload ${resultState}</h1>
+        		<c:if test="${resultState=='Failed'}">
+        			<h3>Reason: ${reason} </h3>
+        			<c:if test="${reason=='Errors exist'}">
+        				<table class="table table-striped">
+        					<c:forEach items="${errors}" var="item">
+								<tr>
+									<td><c:out value="${item}" /></td>
+								</tr>
+							</c:forEach>
+						</table>
+					</c:if>
+				</c:if>
+        </div>
+    </div>
+    
+	<!--<h3>Upload ${resultState}</h3>
 	<c:if test="${resultState=='Failed'}">
 		<h5>Reason: ${reason} </h5>
 		<c:if test="${reason=='Errors exist'}">
@@ -32,6 +56,6 @@
 				</c:forEach>
 			</table>
 		</c:if>
-	</c:if>
+	</c:if>-->
 </body>
 </html>
