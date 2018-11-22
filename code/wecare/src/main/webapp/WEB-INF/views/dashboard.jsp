@@ -50,13 +50,43 @@
 			</div>
                   </nav>
 	    </div>
+	    
 	<h2 id = "state" style="color:#536872;"> ${state} </h2>
+	
+	<div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Welcome ${loginUser.name}!</h1>
+          <p> This platform allows agencies to serve new arrivals in the Scarborough area!</p>
+          <p> Employer: ${loginUser.role}!</p>
+        </div>
+    </div>
+    
+	<!--<h2 id = "state" style="color:#536872;"> ${state} </h2>
 	<h5 style="color:#536872"> Welcome ${loginUser.name}! </h5>
-	<h5 style="color:#536872"> Employer: ${loginUser.role}! </h5>
+	<h5 style="color:#536872"> Employer: ${loginUser.role}! </h5> -->
 		
 	<c:choose>
 	 <c:when test="${loginUser.role=='Agence'}">
-	   <div style="margin-left: 70%;">
+	 <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4">
+            <h2>Uploading files</h2>
+            <p> You can upload templates here.</p>
+            <form method="post" enctype = "multipart/form-data" action="/upload">
+				<div class="form-group" style="color: 808080">
+					<label class="custom-file-label" for="file1">Select a file</label>
+					<input type="file" class = "custom-file-input" id = "file1" name="file1">
+					<button type="submit" class="btn btn-success">submit</button>
+				</div>
+			</form>
+          </div>
+        </div>
+
+        <hr>
+
+      </div>
+      
+	   <!--<div style="margin-left: 70%;">
 		<form method="post" enctype = "multipart/form-data" action="/upload">
 			<div class="form-group" style="color: 808080">
 				<label for="email">Upload a file</label>
@@ -64,7 +94,7 @@
 				<button type="submit" class="btn btn-default">submit</button>
 			</div>
 		</form>
-	  </div>
+	  </div>-->
 	 </c:when>
 	 <c:when test="${loginUser.role=='UTSC'}">
 		<div style="margin-left: 70%;">
@@ -121,8 +151,7 @@
 			Agency:<br>
 			<input style="width:400px;" type="text" name="agency" placeholder="agency">
 			<br><br><br>
-			 <!--<input  id = "submt" type="submit" value="Create" formmethod="post">-->
-			 <button id = "submit" type="submit" class="btn btn-default">Create</button>
+			 <button id = "submit" type="submit" class="btn btn-default" formmethod="post">Create</button>
 			 <a href="/dashboard">Cancel</a>
 		   </form> 
 		   
