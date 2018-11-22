@@ -42,7 +42,7 @@ import com.newcomer.wecare.App;
 @SpringBootTest(classes = App.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 @EnableAutoConfiguration
 @AutoConfigureMockMvc
-public class DashBoardControllerTest {
+public class DashBoardControllerAgenceStaffTest {
 
 	@Autowired
 	private UserRepository repo;
