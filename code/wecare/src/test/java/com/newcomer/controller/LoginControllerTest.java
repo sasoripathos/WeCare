@@ -40,7 +40,7 @@ public class LoginControllerTest {
 
 	@Before
 	public void init() {
-		User a = new User("Amy", "amy@gmail.com", "Agence", "12345", "ABC");
+		User a = new User("Amy", "amy@gmail.com", "Agency", "12345", "ABC");
 		User b = new User("Boris", "boris@gmail.com", "TEQ", "65432", "");
 		User c = new User("Cindy", "cindy@gmail.com", "UTSC", "98765", "");
 		repo.save(a);
@@ -76,7 +76,7 @@ public class LoginControllerTest {
 			.andExpect(status().isOk())
 			.andExpect(model().attribute("loginUser", hasProperty("name", is("Amy"))))
 			.andExpect(model().attribute("loginUser", hasProperty("email", is("amy@gmail.com"))))
-			.andExpect(model().attribute("loginUser", hasProperty("role", is("Agence"))));
+			.andExpect(model().attribute("loginUser", hasProperty("role", is("Agency"))));
 		
 	}
 	

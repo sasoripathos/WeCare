@@ -102,7 +102,7 @@ public class DashBoardController {
 			// If any required parameter is empty, throw exception
 			throw new InvalidParameterException();
 		}
-		if(role.trim().equals("Agence") && agency.trim().equals("")) {
+		if(role.trim().equals("Agency") && agency.trim().equals("")) {
 			// If agency is not specified when try to create an agency account, throw exception
 			throw new InvalidParameterException();
 		}

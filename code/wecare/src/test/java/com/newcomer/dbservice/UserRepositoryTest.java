@@ -33,7 +33,7 @@ public class UserRepositoryTest {
 
 	@Test
 	public void testSaveUser() {
-		User a = new User("Jason", "test@email.com", "Agence", "12345", "ABC");
+		User a = new User("Jason", "test@email.com", "Agency", "12345", "ABC");
 		assertTrue(repo.save(a) != null);
 	}
 	

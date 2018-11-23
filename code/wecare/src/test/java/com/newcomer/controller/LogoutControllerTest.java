@@ -41,7 +41,7 @@ public class LogoutControllerTest {
 
 	@Before
 	public void init() throws Exception {
-		User a = new User("Amy", "amy@gmail.com", "Agence", "12345", "ABC");
+		User a = new User("Amy", "amy@gmail.com", "Agency", "12345", "ABC");
 		User b = new User("Boris", "boris@gmail.com", "TEQ", "65432", "");
 		User c = new User("Cindy", "cindy@gmail.com", "UTSC", "98765", "");
 		repo.save(a);
@@ -50,7 +50,7 @@ public class LogoutControllerTest {
 	}
 	
 	@Test
-	public void testAgenceUserLogout() throws Exception {
+	public void testAgencyUserLogout() throws Exception {
 		User a = new User();
 		HttpSession session = mockmvc.perform(post("/login")
 				.contentType(MediaType.APPLICATION_FORM_URLENCODED)

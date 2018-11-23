@@ -59,7 +59,7 @@ public class DashBoardControllerTEQStaffTest {
 		mockmvc.perform(post("/newaccount").session((MockHttpSession) session)
 				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 				.param("firstname", "").param("email", "123@abc.com").param("password", "12345")
-				.param("role", "Agence").param("agency", ""))
+				.param("role", "Agency").param("agency", ""))
 			.andExpect(status().is3xxRedirection())
 			.andExpect(view().name("redirect:/dashboard"));
 		// Insert doesn't success
@@ -67,11 +67,11 @@ public class DashBoardControllerTEQStaffTest {
 	}
 	
 	@Test
-	public void testAddAccountNoAgencyForAgenceUser() throws Exception {
+	public void testAddAccountNoAgencyForAgencyUser() throws Exception {
 		mockmvc.perform(post("/newaccount").session((MockHttpSession) session)
 				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 				.param("firstname", "someone").param("email", "123@abc.com").param("password", "12345")
-				.param("role", "Agence").param("agency", ""))
+				.param("role", "Agency").param("agency", ""))
 			.andExpect(status().is3xxRedirection())
 			.andExpect(view().name("redirect:/dashboard"));
 		// Insert doesn't success
@@ -95,7 +95,7 @@ public class DashBoardControllerTEQStaffTest {
 		mockmvc.perform(post("/newaccount").session((MockHttpSession) session)
 				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 				.param("firstname", "someone").param("email", "123@abc.com").param("password", "12345")
-				.param("role", "Agence").param("agency", "abc"))
+				.param("role", "Agency").param("agency", "abc"))
 			.andExpect(status().is3xxRedirection())
 			.andExpect(view().name("redirect:/dashboard"));
 		// Insert doesn't success
@@ -104,7 +104,7 @@ public class DashBoardControllerTEQStaffTest {
 		assertEquals("someone", newUser.getName());
 		assertEquals("123@abc.com", newUser.getEmail());
 		assertEquals("12345", newUser.getPassword());
-		assertEquals("Agence", newUser.getRole());
+		assertEquals("Agency", newUser.getRole());
 		assertEquals("abc", newUser.getAgency());
 	}
 	

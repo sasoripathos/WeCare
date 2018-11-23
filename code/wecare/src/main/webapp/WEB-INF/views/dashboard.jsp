@@ -52,7 +52,7 @@
 	    </div>
 	  
 	<c:choose>  
-		<c:when test="${loginUser.role!='Agence'}">
+		<c:when test="${loginUser.role!='Agency'}">
 			<center>
 				<h2 id = "state" style="color:#0c5460;background-color: #d1ecf1;"> ${state} </h2>
 			</center>
@@ -68,7 +68,7 @@
     </div>
 		
 	<c:choose>
-	<c:when test="${loginUser.role=='Agence'}">
+	<c:when test="${loginUser.role=='Agency'}">
 	 	<div class="container">
         	<div class="row">
           		<div class="col-md-4 col-md-offset-4">
@@ -137,7 +137,7 @@
 			 *Role:<br>
 			<!--<input style="width:400px;" type="text" name="role" placeholder="role" required>-->
 			 <select name="role">
-			 	<option>Agence</option>
+			 	<option>Agency</option>
 				<option>TEQ</option>
 				<option>UTSC</option>
 			 </select>

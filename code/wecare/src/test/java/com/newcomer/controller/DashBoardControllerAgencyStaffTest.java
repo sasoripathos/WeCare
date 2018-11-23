@@ -42,7 +42,7 @@ import com.newcomer.wecare.App;
 @SpringBootTest(classes = App.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 @EnableAutoConfiguration
 @AutoConfigureMockMvc
-public class DashBoardControllerAgenceStaffTest {
+public class DashBoardControllerAgencyStaffTest {
 
 	@Autowired
 	private UserRepository repo;
@@ -66,7 +66,7 @@ public class DashBoardControllerAgenceStaffTest {
 	
 	@Before
 	public void init() throws Exception {
-		User a = new User("Amy", "amy@gmail.com", "Agence", "12345", "ABC");
+		User a = new User("Amy", "amy@gmail.com", "Agency", "12345", "ABC");
 		User loginUser = new User();
 		repo.save(a);
 		session = mockmvc.perform(post("/login")
@@ -83,7 +83,7 @@ public class DashBoardControllerAgenceStaffTest {
 			.andExpect(status().isOk())
 			.andExpect(model().attribute("loginUser", hasProperty("name", is("Amy"))))
 			.andExpect(model().attribute("loginUser", hasProperty("email", is("amy@gmail.com"))))
-			.andExpect(model().attribute("loginUser", hasProperty("role", is("Agence"))));
+			.andExpect(model().attribute("loginUser", hasProperty("role", is("Agency"))));
 	}
 	
 	@Test
