@@ -1,5 +1,8 @@
 package com.newcomer.fileprocessor.checker;
 
+/**
+ * A class for holding data cell error message. 
+ */
 public class CellError {
 	
 	private int row;
@@ -16,6 +19,7 @@ public class CellError {
 	
 	@Override
 	public String toString() {
+		// Real row number and column numbers start from one.
 		return "Cell(" + (row+1) + ", " + (column+1) + "): " + message;
 	}
 }
