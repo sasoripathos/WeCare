@@ -115,11 +115,9 @@ public class DashBoardControllerAgencyStaffTest {
 	}
 	
 	@Test
-	public void testUploadMockFileUnknown() throws Exception {
+	public void testUploadUnknownTemplateFile() throws Exception {
 		InputStream in = this.getClass().getResourceAsStream("UnknownTemplate.xlsx");
 		MockMultipartFile file = new MockMultipartFile("file1", "UnknownTemplate.xlsx", "multipart/form-data", in);
-		List<CellError> errors = new ArrayList<CellError>();
-		errors.add(new CellError(5,1,CellError.nullError));
 		mockmvc.perform(multipart("/upload").file(file).session((MockHttpSession) session))
 			.andExpect(status().isOk())
 			.andExpect(view().name("upload_result"))
@@ -127,6 +125,21 @@ public class DashBoardControllerAgencyStaffTest {
 			.andExpect(model().attribute("reason", is("Unknown template")));
 		
 		assertEquals(0, mockrepo.findAll().size());
+		assertEquals(0, narRepo.findAll().size());
+	}
+	
+	@Test
+	public void testUploadNonExcelFile() throws Exception {
+		InputStream in = this.getClass().getResourceAsStream("non_excel.txt");
+		MockMultipartFile file = new MockMultipartFile("file1", "non_excel.txt", "multipart/form-data", in);
+		mockmvc.perform(multipart("/upload").file(file).session((MockHttpSession) session))
+			.andExpect(status().isOk())
+			.andExpect(view().name("upload_result"))
+			.andExpect(model().attribute("resultState", is("Failed")))
+			.andExpect(model().attribute("reason", is("Unknown template")));
+		
+		assertEquals(0, mockrepo.findAll().size());
+		assertEquals(0, narRepo.findAll().size());
 	}
 	
 	@Test
