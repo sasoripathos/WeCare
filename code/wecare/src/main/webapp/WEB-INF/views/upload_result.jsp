@@ -44,18 +44,8 @@
         </div>
     </div>
     
-	<!--<h3>Upload ${resultState}</h3>
-	<c:if test="${resultState=='Failed'}">
-		<h5>Reason: ${reason} </h5>
-		<c:if test="${reason=='Errors exist'}">
-			<table>
-				<c:forEach items="${errors}" var="item">
-					<tr>
-						<td><c:out value="${item}" /></td>
-					</tr>
-				</c:forEach>
-			</table>
-		</c:if>
-	</c:if>-->
+    <footer class="container">
+    	<p>&copy; WeCare 2018</p>
+	</footer>
 </body>
 </html>
