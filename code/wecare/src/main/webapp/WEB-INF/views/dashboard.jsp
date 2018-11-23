@@ -102,8 +102,13 @@
 		</div>
 	 </c:when>
 	 <c:otherwise>
-	       <button id = "newaccount" class="btn btn-success" >add user</button>
+	       <div style="display:flex;flex-direction:row;margin-left:5%;">
+	       <div>
+	       <h2>Manage Users</h2>
+	       <button id = "newaccount" class="btn btn-success" >+user</button>
+	       </div>
 		<div id = "reports" style="margin-left: 30%;">
+		      <h2>Generate Reports</h2>
 		       <div style="color:#536872">Welcome TEQ staff, manage agencies and generate reports here!</div>
 		       
 		       <form method="Get" action="/query">
@@ -112,6 +117,7 @@
 				<br>
 			    
 				<select name="template">
+				        <option>Select</option>
 					<option>NeedAssessRef</option>
 					<option>Template 2</option>
 					<option>Template 3</option>
@@ -126,13 +132,13 @@
 				 </select>
 				 <br> <br>
 				<!--<input type="submit" value="Submit">-->
-				<button type="submit" class="btn btn-default">Submit</button>
+				<button type="submit" class="btn btn-success">Submit</button>
 				
 			</div>
 		      </form>
 		       <h5 style="color:#536872"> ${my_results} </h5>
 		</div>
-		
+		</div>
 		<h1 style="color:#536872"> ${status.result} </h1>
 		
 		<form id = "form1" style ="margin-left:10%;display:none; width:600px;height:600px;" action="/newaccount">
@@ -151,7 +157,7 @@
 			Agency:<br>
 			<input style="width:400px;" type="text" name="agency" placeholder="agency">
 			<br><br><br>
-			 <button id = "submit" type="submit" class="btn btn-default" formmethod="post">Create</button>
+			 <button id = "submit" type="submit" class="btn btn-success" formmethod="post">Create</button>
 			 <a href="/dashboard">Cancel</a>
 		   </form> 
 		   
@@ -164,17 +170,17 @@
 	      <div class="row">
 		    <div class="col-md-4">
 		      <h2>Uploading files</h2>
-		      <p> The site helps agency staff to upload templates containing data for new arrivals... </p>
+		      <p> The site helps agency staff to upload templates containing data for new arrivals. </p>
 		    </div>
 		    
 		    <div class="col-md-4">
 		      <h2>Generating reports</h2>
-		      <p>The TEQ staff generates reports from the uploaded data ...</p>
+		      <p>The TEQ staff generates reports from the uploaded data.</p>
 		    </div>
 		    
 		    <div class="col-md-4">
 		      <h2>Data analysis</h2>
-		      <p>A UTSC staff runs data analysis on existing data to ...</p>
+		      <p>A UTSC staff runs data analysis on existing data.</p>
 		    </div>
 		</div>
                <hr>
