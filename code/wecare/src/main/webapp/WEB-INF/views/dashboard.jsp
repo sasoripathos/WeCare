@@ -26,7 +26,7 @@
 		   setTimeout(function() {
 		       //document.getElementById("state").innerHTML = "";
 		       $('#state').fadeOut();
-		       }, 1500);
+		       }, 3000);
 		
 		    $("#submt").click(function(){
 			$("#form1").css("display", "none");
@@ -84,11 +84,6 @@
           		</div>
         	</div>
         </div>
-	 </c:when>
-	 <c:when test="${loginUser.role=='UTSC'}">
-	 	<div style="margin-left: 70%;">
-		  <h4 style="color:#536872">Welcome UTSC staff, this system provides you with all the data for analysis! </h4>
-		</div>
 	 </c:when>
 	 <c:otherwise>
 	 	<div class="container">
