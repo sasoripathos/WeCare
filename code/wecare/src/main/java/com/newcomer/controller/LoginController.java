@@ -57,6 +57,7 @@ public class LoginController {
 			// Redirect user to dashboard
 			return "redirect:/dashboard";
 		}
+		// Else, login fail
 		return "redirect:/login";
 	}
 	

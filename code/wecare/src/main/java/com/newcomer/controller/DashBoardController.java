@@ -72,20 +72,21 @@ public class DashBoardController {
 	
 	@PostMapping("/upload")
 	public ModelAndView fileUpload(@RequestParam("file1") MultipartFile file) {
+		// Process file
 		List<CellError> errors = processor.process(file);
 		ModelAndView resultPage= new  ModelAndView("upload_result");
 		if(errors == null) {
+			// If null result is return, template is unknown
 			resultPage.addObject("resultState", "Failed");
 			resultPage.addObject("reason", "Unknown template");
 		} else if (errors.size() == 0) {
+			// If no error is returned, upload succeed
 			resultPage.addObject("resultState", "Successful");
-			//resultPage.addObject("reason", "");
-			System.out.println("Upload Success");
 		} else {
+			// Else, there are some errors, upload failed
 			resultPage.addObject("resultState", "Failed");
 			resultPage.addObject("reason", "Errors exist");
 			resultPage.addObject("errors", errors);
-			System.out.println("There are errors");
 		}
 		return resultPage;
 	}
