@@ -17,12 +17,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession(false);
 		if(session == null || session.getAttribute("user") == null) {
 			// If not login, redirect to welcome page
-			System.out.println("PreHandle false");
 			response.sendRedirect("/");
 			return false;
 		}
 		// If login, do nothing
-		System.out.println("PreHandle true");
 		return true;
 	}
 

@@ -62,6 +62,12 @@ public class LoginControllerTest {
 	}
 	
 	@Test
+	public void testDenyAccessIfNotLogin() throws Exception {
+		mockmvc.perform(get("/dashboard"))
+			.andExpect(status().is3xxRedirection());
+	}
+	
+	@Test
 	public void testLoginAgencyUserSuccess() throws Exception {
 		User b = new User();
 		HttpSession session = mockmvc.perform(post("/login")

@@ -110,11 +110,9 @@ public class DashBoardController {
 		User exist = repo.findByEmail(email);
 		if(exist != null) {
 			// If email is used, throw exception
-			System.out.println("new account error");
 			throw new UserExistedException(email);
 			
 		} else {
-			System.out.println("new account successfully created!");
 			// create new account
 			User newUser = new User(name, email, role, password, agency);
 			repo.save(newUser);
