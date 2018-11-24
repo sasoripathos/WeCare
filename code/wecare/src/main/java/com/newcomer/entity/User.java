@@ -3,6 +3,9 @@ package com.newcomer.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * Document class for system user data.
+ */
 @Document(collection="User")
 public class User {
 	/**

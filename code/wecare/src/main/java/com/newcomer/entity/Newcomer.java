@@ -4,6 +4,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * Document class for newcomer data.
+ */
 @Document(collection="Newcomer")
 public class Newcomer {
 	

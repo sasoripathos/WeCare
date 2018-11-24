@@ -51,8 +51,12 @@ public class DashBoardController {
 	@Autowired
 	private UserRepository repo;
 	
+	/**
+	 * FileProcessot services
+	 */
 	@Autowired
 	private FileProcessor processor;
+	
 	/**
 	 * Display the dashboard.
 	 * @param request request the HTTP request for displaying dashboard.
@@ -70,6 +74,12 @@ public class DashBoardController {
 		return "dashboard";
 	}
 	
+	/**
+	 * Extract data from template, check error and save data.
+	 * 
+	 * @param file the uploaded template.
+	 * @return upload result page.
+	 */
 	@PostMapping("/upload")
 	public ModelAndView fileUpload(@RequestParam("file1") MultipartFile file) {
 		// Process file
@@ -91,6 +101,9 @@ public class DashBoardController {
 		return resultPage;
 	}
 	
+	/**
+	 * Create new account for new system user.
+	 */
 	@PostMapping("/newaccount")
 	public String addAccount(RedirectAttributes rediAttr, @RequestParam("firstname") String name, 
 			@RequestParam("email") String email, @RequestParam("password") String password, 
@@ -123,10 +136,15 @@ public class DashBoardController {
 	}
 	
 	
+	/**
+	 * Generate report for user query.
+	 */
 	@SuppressWarnings("resource")
 	@GetMapping("/query")
 	@ModelAttribute
-	public ResponseEntity<InputStreamResource> data(@RequestParam("template") String template,@RequestParam("query") String query, String db_collection, Model model) throws FileNotFoundException {
+	public ResponseEntity<InputStreamResource> data(@RequestParam("template") String template,
+			@RequestParam("query") String query, String db_collection,
+			Model model) throws FileNotFoundException {
 		System.out.println(template);
 		System.out.println(query);
 		
@@ -178,7 +196,10 @@ public class DashBoardController {
 			 .body(resource);
 		}
 	
-	public CSVWriter writeData(MongoCollection<org.bson.Document> coll, CSVWriter csvWriter){
+	/**
+	 * Write mongodb documents data into .csv file.
+	 */
+	private CSVWriter writeData(MongoCollection<org.bson.Document> coll, CSVWriter csvWriter){
 		MongoCursor<org.bson.Document> data = coll.find().iterator();
 		try {
 			String id       = "identifierValue";

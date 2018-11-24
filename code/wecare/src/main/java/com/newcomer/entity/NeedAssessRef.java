@@ -3,6 +3,9 @@ package com.newcomer.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * Document class for Needs Assessment and Referrals Service service data.
+ */
 @Document(collection="NeedAssessRef")
 public class NeedAssessRef {
 	

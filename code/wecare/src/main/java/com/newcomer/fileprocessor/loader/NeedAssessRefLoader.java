@@ -13,6 +13,11 @@ import com.newcomer.entity.Newcomer;
 import com.newcomer.entity.SupportService;
 import com.newcomer.fileprocessor.ValueTranslator;
 
+/**
+ * This class is a stateless service (singleton) which takes a row of data in the
+ * Needs Assessment and Referrals Service template and save it to corresponding 
+ * database tables/collections.
+ */
 @Service("Needs Assessment and Referrals Service")
 public class NeedAssessRefLoader implements TemplateLoader {
 	
