@@ -123,6 +123,7 @@ public class DashBoardController {
 	}
 	
 	
+	@SuppressWarnings("resource")
 	@GetMapping("/query")
 	@ModelAttribute
 	public ResponseEntity<InputStreamResource> data(@RequestParam("template") String template,@RequestParam("query") String query, String db_collection, Model model) throws FileNotFoundException {
@@ -135,7 +136,6 @@ public class DashBoardController {
 			try {
 				file = new CSVWriter(new FileWriter("empty.csv"));
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			System.out.println(file.hashCode());
@@ -143,62 +143,29 @@ public class DashBoardController {
 					 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + "empty.csv" + "\"")
 					 .contentType(MediaType.APPLICATION_PDF).contentLength(0)
 					 .body(new InputStreamResource(new FileInputStream("empty.csv")));
-			
-		}
+			}
 
-		
 		System.out.println("code executed");
 		File file = new File("report.csv");
 		FileWriter report = null;
 		try {
 			report = new FileWriter("report.csv");
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		CSVWriter csvWriter = new CSVWriter(report);
-			
 			try {
-				
 				String url         = "mongodb://weCare:newcomers100@ds117691.mlab.com:17691/team3";
 				MongoClientURI uri = new MongoClientURI(url);
 				MongoClient mongo_client = new MongoClient(uri);
 				MongoDatabase db = mongo_client.getDatabase("team3");
 				MongoCollection<org.bson.Document> collection = db.getCollection(template);
-				
-				
-				MongoCursor<org.bson.Document> data = collection.find().iterator();
-				
-				
-				try {
-					
-					
-			
-			        csvWriter.writeNext(new String[]{"identifierValue", "procDetail","updateRecordID", "startDate", "serviceLanguage","institutionType","referredBy","completedAndShared", "endDate"});
-			       
-			        while(data.hasNext()){
-						Document nxt = data.next();
-						csvWriter.writeNext(new String[]{nxt.get("identifierValue").toString(),nxt.get("procDetail").toString(),nxt.get("updateRecordID").toString(),nxt.get("startDate").toString(),nxt.get("serviceLanguage").toString(),nxt.get("institutionType").toString(),nxt.get("referredBy").toString(),nxt.get("completedAndShared").toString(),nxt.get("endDate").toString()});
-						
-					}
-			 
-			        csvWriter.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		        
-				
-			
-				data.close();
+				csvWriter = writeData(collection,csvWriter);
 				mongo_client.close();
 				model.addAttribute("my_results", "Success");
-				
-				
 			} catch (MongoException e) {
 				
 			}
-			
 			InputStreamResource resource = null;
 			try {
 				resource = new InputStreamResource(new FileInputStream("report.csv"));
@@ -210,5 +177,42 @@ public class DashBoardController {
 			 .contentType(MediaType.TEXT_PLAIN).contentLength(file.length())
 			 .body(resource);
 		}
+	
+	public CSVWriter writeData(MongoCollection<org.bson.Document> coll, CSVWriter csvWriter){
+		MongoCursor<org.bson.Document> data = coll.find().iterator();
+		try {
+			String id       = "identifierValue";
+			String details  = "procDetail";
+			String recrdId  = "updateRecordID";
+			String stDate   = "startDate";
+			String language = "serviceLanguage";
+			String instType = "institutionType";
+			String ref      = "referredBy";
+			String shared   = "completedAndShared";
+			String enDate   = "endDate";
+			// Write column headers
+	        csvWriter.writeNext(new String[]{id, details,recrdId, stDate, language,instType,ref,shared, enDate});
+	        // Write each row into the file
+	        while(data.hasNext()){
+				Document nxt = data.next();
+				String col1 = nxt.get("identifierValue").toString();
+				String col2 = nxt.get("procDetail").toString();
+				String col3 = nxt.get("updateRecordID").toString();
+				String col4 = nxt.get("startDate").toString();
+				String col5 = nxt.get("serviceLanguage").toString();
+				String col6 = nxt.get("institutionType").toString();
+				String col7 = nxt.get("referredBy").toString();
+				String col8 = nxt.get("completedAndShared").toString();
+				String col9 = nxt.get("completedAndShared").toString();
+				csvWriter.writeNext(new String[]{col1,col2,col3,col4,col5,col6,col7,col8,col9});
+				
+			}
+	        csvWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		data.close();
+		return csvWriter;
+	}
 	
 }

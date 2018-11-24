@@ -71,13 +71,14 @@
 	<c:when test="${loginUser.role=='Agency'}">
 	 	<div class="container">
         	<div class="row">
-          		<div class="col-md-4 col-md-offset-4">
+          		<div class="col-md-8">
             		<h2>Uploading files</h2>
             		<p> You can upload templates here.</p>
             		<form method="post" enctype = "multipart/form-data" action="/upload">
 						<div class="form-group" style="color: 808080">
 							<label class="custom-file-label" for="file1">Select a file</label>
 							<input type="file" class="custom-file-input" id="file1" name="file1">
+							<br>
 							<button type="submit" class="btn btn-success">submit</button>
 						</div>
 					</form>
