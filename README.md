@@ -14,8 +14,16 @@ Software you need to install before building the project
 Java 8, Maven
 ```
 
-## Installing
-Clone this repository to your machine. Open a terminal/command line in the working copy and enter following command:
+## Run Unit/Integration/Acceptance Test
+Clone this repository to your machine. Open a terminal/command line in the working copy (master branch) and enter following command:
+```
+1. cd ./code/wecare
+2. mvn clean test
+```
+All 168 unit/integration/acceptance test cases will be run.
+
+## Build and Run
+Clone this repository to your machine. Open a terminal/command line in the working copy (master branch) and enter following command:
 ```
 1. cd ./code/wecare
 2. mvn clean install
@@ -41,7 +49,7 @@ Bob | bob@gmail.com | bob12345
 Charlie | charlie@gmail.com | charlie12345
 
 # Recent significant changes
-- [11/26/2018] Added a folder for Deliverable 5 in documents/, which contains the sprint backlogs for sprint 5 & 6, as well as code review activity. Updated user stories for version 3. Updated the readme to include the link to our final product demo video.
+- [11/26/2018] Added a folder for Deliverable 5 in documents/, which contains the sprint backlogs for sprint 5 & 6, guideline for test and build, as well as code review activity. Updated user stories for version 3. Updated the readme to include the link to our final product demo video. Merge newest version of project into master branch.
 - [11/12/2018] Merge report generation feature and integration/UAT tests into master branch.  Added sprint3 and sprint4 folders in /documents/sprint backlog, as well as documents for those sprints. Added new folder for Deliverable 4 in /documents/, which contains the Code Review and Sprint 3 & 4 backlogs. Updated user stories to version 2.
 - [11/11/2018] Added a folder for Code Review in /documents/, which contains our completed Code Review summary, Code Review guidelines, and video with our code review recommendations.
 - [10/31/2018] Updated user stories to version 1.
