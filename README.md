@@ -31,6 +31,8 @@ Clone this repository to your machine. Open a terminal/command line in the worki
 ```
 A copy of weCare will start running on your machine.
 
+For more details about test and build this project, please refer to documents/Test&Build Guideline/Guideline for Test and Run Project.pdf
+
 ## Built With
 
 * [Spring](https://spring.io/) - The web framework used
