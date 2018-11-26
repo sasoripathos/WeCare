@@ -1,6 +1,9 @@
 # Team 3 - Team Newcomer
 We are Team Newcomer! Our goals for this project are to learn how to work efficiently in a fast-paced environment, how to work professionally on a real project, hopefully expose ourselves to some new technologies, and of course, to get a good mark! Through the incremental progression on this project, we will strive to gain a solid understanding on how to both develop & deliver software effectively. 
 
+# Team Newcomer Final Product video
+https://youtu.be/7MJ6hdX2AXA
+
 # Get Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
@@ -38,10 +41,12 @@ Bob | bob@gmail.com | bob12345
 Charlie | charlie@gmail.com | charlie12345
 
 # Recent significant changes
-- [11/12/2018] Merge report generation feature and integration/UAT tests into master branch.
+- [11/26/2018] Added a folder for Deliverable 5 in documents/, which contains the sprint backlogs for sprint 5 & 6, as well as code review activity. Updated user stories for version 3. Updated the readme to include the link to our final product demo video.
+- [11/12/2018] Merge report generation feature and integration/UAT tests into master branch.  Added sprint3 and sprint4 folders in /documents/sprint backlog, as well as documents for those sprints. Added new folder for Deliverable 4 in /documents/, which contains the Code Review and Sprint 3 & 4 backlogs. Updated user stories to version 2.
+- [11/11/2018] Added a folder for Code Review in /documents/, which contains our completed Code Review summary, Code Review guidelines, and video with our code review recommendations.
 - [10/31/2018] Updated user stories to version 1.
 - [10/28/2018] Added Sprint2 backlog in documents/Deliverable 3 - October 29th/Spring 2 Backlog, and documents/sprint backlog. Merged file upload feature into master branch.
-- [10/25/2018] Added Sprint1 backlog in /documents/Deliverable 3 - October 29th/Spring 1 Backlog/.Created a folder for spring backlog in /documents/ that will include backlog for all sprints.
+- [10/25/2018] Added Sprint1 backlog in /documents/Deliverable 3 - October 29th/Spring 1 Backlog/. Created a folder for spring backlog in /documents/ that will include backlog for all sprints.
 - [10/21/2018] Merged login feature into master branch.
 - [10/15/2018] Added project skeleton code in /code.
 - [10/10/2018] Added the second deliverable in /documents/Deliverable 2 - October 15th/. Created a folder for product backlog in /documents/ that will include the most up-to-date versions of the User Stories and Personas.
