@@ -1,7 +1,7 @@
-# Team 3 - Team Newcomer
-We are Team Newcomer! Our goals for this project are to learn how to work efficiently in a fast-paced environment, how to work professionally on a real project, hopefully expose ourselves to some new technologies, and of course, to get a good mark! Through the incremental progression on this project, we will strive to gain a solid understanding on how to both develop & deliver software effectively. 
+# WeCare
+WeCare is a web application built for immigration agencies that provides services for newcomers. WeCare takes in iCare templates (EXCEL files which contains service information about newcomers), checks errors and migrates data to MongoDB. It can also generate .csv reports based on data in database. 
 
-# Team Newcomer Final Product video
+# Final Product video
 https://youtu.be/7MJ6hdX2AXA
 
 # Get Started
